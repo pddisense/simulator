@@ -1,0 +1,8 @@
+/*.log
+/*.csv
+/.idea
+/.project
+.DS_Store
+*.iml
+target
+/.ropeproject
