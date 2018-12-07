@@ -6,31 +6,6 @@ The core is written in a mix of Java and Scala, along with some scripts for pre-
 You will need Python (either Python 2 and 3 should be supported) and pip to install the requirements from the requirements.txt file.
 You will also need Java JDK 8 to compile and run the simulator.
 
-## Pre-processing activity
-
-[A dataset coming from Mozilla](https://web.archive.org/web/20110711092459/https://testpilot.mozillalabs.com/testcases/a-week-life/aggregated-data.html) is used to simulate users' activity, i.e., how often they interact with their browser.
-After downloading the dataset, you can start the pre-processing with the following command:
-
-```bash
-./scripts/process_mozilla.py /path/to/week-life-stats-70.csv
-```
-
-This will output to the console two parameters a and b that parametrise a beta distribution characterising the users' activity.
-An `activity.csv` file is dumped as well, containing the activity simulated from the dataset.
-
-## Pre-processing searches
-
-[A dataset from Yahoo (L18)](https://webscope.sandbox.yahoo.com/catalog.php?datatype=l#toggle50) is used to simulate users' Web searches.
-After downloading the dataset, you can start the pre-processing with the following command:
-
-```bash
-./scripts/process_yahoo.py /path/to/search_logs-v1.txt
-```
-
-This will output to the console two parameters mu and var that parametrise a normal distribution characterising the number of searches performed every day by a user.
-A `queries.csv` file is created as well, containing the frequency of each query in the dataset.
-Please note that the dataset is anonymised, meaning that we do not have access to the actual content of the query but only an identifier for it.
-
 ## Running the simulator
 
 The simulator can be compiled into so-called "fat JAR":
@@ -75,3 +50,30 @@ You can use a helper script to parse the stderr of every run and extract the rel
 ```bash
 ./scripts/analyse.py /path/to/lumosresults
 ```
+
+## Pre-processing activity
+
+[A dataset coming from Mozilla](https://web.archive.org/web/20110711092459/https://testpilot.mozillalabs.com/testcases/a-week-life/aggregated-data.html) is used to simulate users' activity, i.e., how often they interact with their browser.
+After downloading the dataset, you can start the pre-processing with the following command:
+
+```bash
+./scripts/process_mozilla.py /path/to/week-life-stats-70.csv
+```
+
+This will output to the console two parameters a and b that parametrise a beta distribution characterising the users' activity.
+An `activity.csv` file is dumped as well, containing the activity simulated from the dataset.
+Please note that the outcome of this pre-processing is already included (hard-coded) into the simulator.
+
+## Pre-processing searches
+
+[A dataset from Yahoo (L18)](https://webscope.sandbox.yahoo.com/catalog.php?datatype=l#toggle50) is used to simulate users' Web searches.
+After downloading the dataset, you can start the pre-processing with the following command:
+
+```bash
+./scripts/process_yahoo.py /path/to/search_logs-v1.txt
+```
+
+This will output to the console two parameters mu and var that parametrise a normal distribution characterising the number of searches performed every day by a user.
+A `queries.csv` file is created as well, containing the frequency of each query in the dataset.
+Because the dataset is anonymised, meaning that we do not have access to the actual content of the query but only an identifier for it.
+Please note that the outcome of this pre-processing is already included (hard-coded) into the simulator.
