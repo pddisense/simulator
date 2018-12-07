@@ -35,6 +35,12 @@ Available options are:
   * *groups*: strategy to organise users into groups (either "naive" or "prune").
   * *gs*: group size.
 
+For example, the following invocation will simulate 100 users over 15 days with 2 days of delay:
+
+```bash
+java -Xmx20G -Xms20G -jar target/scala-2.12/simulator.jar users=100 days=15 delay=2
+```
+
 Results are dumped into a directory such as `lumosresults/QZnAPNAogTi6UHdmRvNhai`, where each run is given a different unique identifier.
 Each run directory contains two files `stdout` and `stderr`, capturing the content of the standard output and error streams.
 Some special lines of the standard error stream starting with "LUMOS " are especially relevant, as they contain information about parameters, metrics or outputs.
